@@ -7,7 +7,6 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class BrowserDriverFactory {
 
-    // Use ThreadLocal to ensure a separate WebDriver instance per thread
     private static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
 
     public static WebDriver getDriver(String browser) {
