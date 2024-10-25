@@ -31,7 +31,7 @@ public class BrowserDriverFactory {
     public static void quitDriver() {
         if (driver.get() != null) {
             driver.get().quit();
-            driver.remove();  // Ensure the instance is cleaned up
+            driver.remove();
         }
     }
 }

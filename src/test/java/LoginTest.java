@@ -26,7 +26,7 @@ public class LoginTest {
     public void setup(@Optional("chrome") String browser) {
         driver = BrowserDriverFactory.getDriver(browser);
         driver.get("https://www.saucedemo.com/");
-        wait = new WebDriverWait(driver, Duration.ofSeconds(1));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         loginPage = new LoginPage(driver, wait);
         dashboardPage = new DashboardPage(driver);
     }
