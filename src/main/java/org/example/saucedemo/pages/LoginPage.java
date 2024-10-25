@@ -1,8 +1,6 @@
 package org.example.saucedemo.pages;
 
-import org.openqa.selenium.TimeoutException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.By;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
@@ -14,9 +12,9 @@ public class LoginPage {
     private WebDriverWait wait;
     private Logger logger = LoggerFactory.getLogger(LoginPage.class);
 
-    private By usernameField = By.id("user-name");
-    private By passwordField = By.id("password");
-    private By loginButton = By.id("login-button");
+    private By usernameField = By.cssSelector("#user-name");
+    private By passwordField = By.cssSelector("#password");
+    private By loginButton = By.cssSelector("#login-button");
     private By errorMessage = By.cssSelector(".error-message-container");
 
     public LoginPage(WebDriver driver, WebDriverWait wait) {
@@ -31,18 +29,31 @@ public class LoginPage {
 
     public void enterPassword(String password) {
         wait.until(ExpectedConditions.visibilityOfElementLocated(passwordField)).sendKeys(password);
-        logger.info("Entered password");
+        logger.info("Entered password: " + password);
+    }
+
+    public void clearUsername() {
+        WebElement username = driver.findElement(usernameField);
+        username.clear();
+        username.sendKeys(" ");
+        username.sendKeys(Keys.BACK_SPACE);
+        logger.info("Cleared username");
+    }
+
+    public void clearPassword() {
+        WebElement username = driver.findElement(passwordField);
+        username.clear();
+        username.sendKeys(" ");
+        username.sendKeys(Keys.BACK_SPACE);
+        logger.info("Cleared password");
     }
 
     public void clickLogin() {
         wait.until(ExpectedConditions.elementToBeClickable(loginButton)).click();
+        logger.info("Logged in");
     }
 
     public String getErrorMessage() {
-        try {
-            return wait.until(ExpectedConditions.visibilityOfElementLocated(errorMessage)).getText();
-        } catch (TimeoutException e) {
-            return null;
-        }
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(errorMessage)).getText();
     }
 }
