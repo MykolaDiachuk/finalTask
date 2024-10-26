@@ -12,7 +12,6 @@ This project automates the login functionality tests for [SauceDemo](https://www
 - **Browser Support**: Chrome, Firefox
 - **BDD Tool**: Cucumber
 - **Assertions**: AssertJ
-- **Design Patterns Used**: Singleton, Adapter, Strategy
 
 ## Features and Test Cases
 The following test cases verify the behavior of the SauceDemo login form:
