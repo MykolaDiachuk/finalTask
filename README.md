@@ -14,7 +14,7 @@ This project automates the login functionality tests for [SauceDemo](https://www
 - **Assertions**: AssertJ
 
 ## Features and Test Cases
-The following test cases verify the behavior of the SauceDemo login form:
+The following test cases verify the behavior of the SauceDemo login form, implemented in the [login.feature file](https://github.com/MykolaDiachuk/finalTask/blob/main/src/test/resources/features/login.feature):
 
 ### Test Case UC-1: Empty Credentials
 1. Navigate to the login page.
@@ -42,6 +42,5 @@ The following test cases verify the behavior of the SauceDemo login form:
 - **Logging**: SLF4J and Logback used to log each action and result.
 
 ### Execute Tests
-
 To execute tests run multi-browser-suite.xml
 
