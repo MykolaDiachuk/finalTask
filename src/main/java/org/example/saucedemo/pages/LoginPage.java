@@ -8,14 +8,14 @@ import org.slf4j.LoggerFactory;
 
 public class LoginPage {
 
-    private WebDriver driver;
-    private WebDriverWait wait;
-    private Logger logger = LoggerFactory.getLogger(LoginPage.class);
+    private final WebDriver driver;
+    private final WebDriverWait wait;
+    private final Logger logger = LoggerFactory.getLogger(LoginPage.class);
 
-    private By usernameField = By.cssSelector("#user-name");
-    private By passwordField = By.cssSelector("#password");
-    private By loginButton = By.cssSelector("#login-button");
-    private By errorMessage = By.cssSelector(".error-message-container");
+    private final By usernameField = By.cssSelector("#user-name");
+    private final By passwordField = By.cssSelector("#password");
+    private final By loginButton = By.cssSelector("#login-button");
+    private final By errorMessage = By.cssSelector(".error-message-container");
 
     public LoginPage(WebDriver driver, WebDriverWait wait) {
         this.driver = driver;

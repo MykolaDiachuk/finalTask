@@ -1,15 +1,15 @@
 package steps;
 
+import io.cucumber.java.After;
 import io.cucumber.java.Before;
-import io.cucumber.java.BeforeStep;
-import io.cucumber.java.Scenario;
 import io.cucumber.java.en.*;
 import org.example.saucedemo.pages.DashboardPage;
 import org.example.saucedemo.pages.LoginPage;
 import org.example.saucedemo.utils.BrowserDriverFactory;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.annotations.Parameters;
+import org.slf4j.MDC;
+
 
 
 import static org.assertj.core.api.Assertions.*;
@@ -17,15 +17,15 @@ import static org.assertj.core.api.Assertions.*;
 import java.time.Duration;
 public class LoginSteps {
     private WebDriver driver;
-    private WebDriverWait wait;
     private LoginPage loginPage;
     private DashboardPage dashboardPage;
 
     @Before
     public void setup() {
-        String browser = System.getProperty("browser");
+        String browser = System.getProperty("browser", "chrome");
+        MDC.put("browser", browser);
         driver = BrowserDriverFactory.getDriver(browser);
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         loginPage = new LoginPage(driver, wait);
         dashboardPage = new DashboardPage(driver);
     }
@@ -69,6 +69,10 @@ public class LoginSteps {
     public void i_should_see_dashboard_title(String expectedTitle) {
         assertThat(dashboardPage.getTitle()).contains(expectedTitle);
     }
-
+    @After
+    public void tearDown() {
+        BrowserDriverFactory.quitDriver();
+        MDC.remove("browser");
+    }
 
 }

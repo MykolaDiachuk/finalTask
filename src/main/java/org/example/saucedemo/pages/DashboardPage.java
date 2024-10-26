@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 
 public class DashboardPage {
 
-    private WebDriver driver;
+    private final WebDriver driver;
 
     public DashboardPage(WebDriver driver) {
         this.driver = driver;

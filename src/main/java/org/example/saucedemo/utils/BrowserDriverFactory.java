@@ -7,7 +7,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class BrowserDriverFactory {
 
-    private static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
+    private static final ThreadLocal<WebDriver> driver = new ThreadLocal<>();
 
     public static WebDriver getDriver(String browser) {
         if (driver.get() == null) {

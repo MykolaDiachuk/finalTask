@@ -2,7 +2,6 @@ package runner;
 
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
-import org.example.saucedemo.utils.BrowserDriverFactory;
 import org.testng.annotations.*;
 
 @CucumberOptions(
@@ -13,7 +12,7 @@ import org.testng.annotations.*;
         monochrome = true
 )
 public class TestRunner extends AbstractTestNGCucumberTests {
-@Override
+    @Override
     @DataProvider(parallel = true)
     public Object[][] scenarios() {
         return super.scenarios();
@@ -21,15 +20,11 @@ public class TestRunner extends AbstractTestNGCucumberTests {
 
     @Parameters({"browserDriver"})
     @BeforeTest
-    public void setUp(String browserDriver) {
-        System.out.println(browserDriver);
+    public void setUpBrowser(String browserDriver) {
         System.setProperty("browser", browserDriver);
 
     }
 
-    @AfterMethod
-    public void tearDown() {
-        BrowserDriverFactory.quitDriver();
-    }
+
 }
 
